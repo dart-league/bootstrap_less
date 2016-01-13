@@ -11,14 +11,14 @@ This project contains all the bootstrap less source files. This project will be 
 Create a new project with next structrue:
 
 ```
-[project_root]
-  |  pubspec.yaml
-  ├──web
-  |  index.html
-  |  theme.less
-  |  ... other files and folders ...
-  ├──lib
-  |  ... lib files and folders ...
+[[project_root]
+  ├─ pubspec.yaml
+  ├─ web
+  |  ├─ index.html
+  |  ├─ theme.less
+  |  └─ ... other files and folders ...
+  └─ lib
+     └─ ... lib files and folders ...
 ```
 
 In the `pubspect.yaml` file add the `bootstrap_less` dependency and `less_dart` dependency, then you will need to add `less_dart` transformer (this is in charge of converting less files into css).
