@@ -11,12 +11,12 @@ This project contains all the bootstrap less source files. This project will be 
 Create a new project with next structrue:
 
 ```
-[[project_root]
+[project_root]
   ├─ pubspec.yaml
   ├─ web
-  |  ├─ index.html
-  |  ├─ theme.less
-  |  └─ ... other files and folders ...
+  │  ├─ index.html
+  │  ├─ theme.less
+  │  └─ ... other files and folders ...
   └─ lib
      └─ ... lib files and folders ...
 ```
