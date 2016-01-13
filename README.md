@@ -8,7 +8,7 @@ This project contains all the bootstrap less source files. This project will be 
 
 # Usage
 
-Create a new project with next structrue:
+Create a new project with next structure:
 
 ```
 [project_root]
