@@ -1,0 +1,15 @@
+name: bootstrap_less
+version: 0.0.1
+description: Less source files to create bootstrap themes
+author: Luis Vargas <luisvargastijerino@gmail.com>
+homepage: https://github.com/luisvt/bootstrap_less
+environment:
+  sdk: '>=1.0.0 <2.0.0'
+dependencies:
+  less_dart: 0.3.3
+transformers:
+- less_dart:
+    entry_point:
+      - lib/less/bootstrap.less
+      - lib/less/theme.less
+    include_path: packages/bootstrap_less/less
