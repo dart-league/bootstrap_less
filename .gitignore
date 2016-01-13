@@ -1,3 +1,4 @@
+*.iml
 # Ignore docs files
 _gh_pages
 _site
@@ -39,3 +40,7 @@ docs/.jekyll-metadata
 # Folders to ignore
 bower_components
 node_modules
+.packages
+.pub
+/pubspec.lock
+**/packages
