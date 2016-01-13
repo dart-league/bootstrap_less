@@ -79,7 +79,7 @@ Finally in the `index.html` you will add the link to `theme.css` as it follows:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- you could add bootstrap.css file -->
   <link rel="stylesheet" href="packages/bootstrap_less/less/bootstrap.css">
-  <!-- you can also add theme.css ->>
+  <!-- you can also add theme.css -->
   <link rel="stylesheet" href="theme.css">
 </head>
 <body>
