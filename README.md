@@ -16,6 +16,7 @@ Create a new project with next structure:
   ├─ web
   │  ├─ index.html
   │  ├─ theme.less
+  │  ├─ variables.less
   │  └─ ... other files and folders ...
   └─ lib
      └─ ... lib files and folders ...
@@ -27,45 +28,98 @@ In the `pubspect.yaml` file add the `bootstrap_less` dependency and `less_dart` 
 ...
 depencencies:
   ...
-  bootstrap_less: ^0.0.1
-  less_dart: ^0.3.3
+  bootstrap_less: any
+  less_dart: any
   ...
 transformers:
   ...
-  less_dart:
+  - less_dart:
     entry_point:
       - web/theme.less
       # any other less entry points should be added here
-     include_path: packages/bootstrap_less/less
+    include_path: web
   ...
 ```
 
-Then in the `theme.less` add the styles and variables you need to change.
+Then in `variables.less` add the variables you want to modify
 
 ```less
-@import 'variables.less';
-@import 'mixins.less';
+// Cerulean 3.3.6
+// Variables
+// --------------------------------------------------
 
-@black: black;
-@white: white;
+
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+
+@gray-base:              #000;
+@gray-darker:            lighten(@gray-base, 13.5%); // #222
+@gray-dark:              lighten(@gray-base, 20%);   // #333
+@gray:                   lighten(@gray-base, 33.5%); // #555
+@gray-light:             lighten(@gray-base, 60%);   // #999
+@gray-lighter:           lighten(@gray-base, 93.5%); // #eee
+
+@brand-primary:         #2FA4E7;
+@brand-success:         #73A839;
+@brand-info:            #033C73;
+@brand-warning:         #DD5600;
+@brand-danger:          #C71C22;
+
+...
+```
+
+Then in the `theme.less` add the styles you need to change.
+
+```less
+@import "packages/bootstrap_less/less/bootstrap";
+@import "variables"; // variables should be imported after bootstrap to override variables values
+
+// Cerulean 3.3.5
+// Bootswatch
+// -----------------------------------------------------
+
+n2s-icon :extend(.glyphicon) {}
+
+.btn-shadow(@color) {
+  #gradient > .vertical-three-colors(lighten(@color, 8%), @color, 60%, darken(@color, 4%));
+  filter: none;
+  border-bottom: 1px solid darken(@color, 10%);
+}
+
+// Navbar =====================================================================
 
 .navbar {
-  min-height: 40px;
-}
+  .btn-shadow(@navbar-default-bg);
+  filter: none;
+  .box-shadow(0 1px 10px rgba(0, 0, 0, 0.1));
 
-.navbar-default {
-  background: transparent;
-  border: 0;
-  margin-bottom: 0;
-}
+  &-default {
 
-.navbar-nav > li {
-  background: @black;
+    .badge {
+      background-color: #fff;
+      color: @navbar-default-bg;
+    }
+  }
 
-  a{
-    padding: 10px;
+  &-inverse {
+    #gradient > .vertical-three-colors(lighten(@navbar-inverse-bg, 8%), lighten(@navbar-inverse-bg, 4%), 60%, darken(@navbar-inverse-bg, 2%));
+    filter: none;
+    border-bottom: 1px solid darken(@navbar-inverse-bg, 10%);
+
+    .badge {
+      background-color: #fff;
+      color: @navbar-inverse-bg;
+    }
+  }
+
+  .navbar-nav > li > a,
+  &-brand {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   }
 }
+
+...
 ```
 
 Finally in the `index.html` you will add the link to `theme.css` as it follows:
